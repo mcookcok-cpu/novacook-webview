@@ -27,14 +27,9 @@ jobs:
     - name: Install Cordova
       run: npm install -g cordova
 
-    - name: Install Android Platform
+    - name: Install Android Platform (older Cordova compatible with Gradle)
       run: |
-        cordova platform add android@12.0.1
-
-    - name: Generate Icons
-      run: |
-        mkdir -p res/icon/android
-        cordova-icon-generator --icon=res/icon/icon.png --output=res/icon/android 2>/dev/null || echo "Icon generation skipped, using defaults"
+        cordova platform add android@11.0.0
 
     - name: Build Debug APK
       run: |
