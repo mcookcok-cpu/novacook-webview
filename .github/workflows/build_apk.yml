@@ -16,8 +16,13 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: '20'
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
     - name: Install Cordova
       run: npm install -g cordova
@@ -25,6 +30,11 @@ jobs:
     - name: Install Android Platform
       run: |
         cordova platform add android@12.0.1
+
+    - name: Generate Icons
+      run: |
+        mkdir -p res/icon/android
+        cordova-icon-generator --icon=res/icon/icon.png --output=res/icon/android 2>/dev/null || echo "Icon generation skipped, using defaults"
 
     - name: Build Debug APK
       run: |
