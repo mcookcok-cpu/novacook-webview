@@ -37,11 +37,6 @@ jobs:
         sudo unzip -q gradle-7.6.4-bin.zip -d /opt/
         sudo ln -sf /opt/gradle-7.6.4/bin/gradle /usr/local/bin/gradle
 
-    - name: Accept Android SDK Licenses & Install Build Tools
-      run: |
-        yes | sdkmanager --licenses
-        sdkmanager "build-tools;32.0.0" "platform-tools" "platforms;android-32"
-
     - name: Build Debug APK
       run: |
         export PATH=/opt/gradle-7.6.4/bin:$PATH
