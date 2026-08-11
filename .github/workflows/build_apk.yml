@@ -22,14 +22,14 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17'
+        java-version: '21'
 
     - name: Install Cordova
       run: npm install -g cordova
 
-    - name: Install Android Platform (older Cordova compatible with Gradle)
+    - name: Install Android Platform
       run: |
-        cordova platform add android@11.0.0
+        cordova platform add android@10.1.2
 
     - name: Build Debug APK
       run: |
