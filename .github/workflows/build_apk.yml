@@ -31,6 +31,15 @@ jobs:
       run: |
         cordova platform add android@11.0.0
 
+    - name: Install Gradle 7.5 (compatible)
+      run: |
+        # Use Gradle 7.x to avoid XmlParser issue with Gradle 9
+        sudo apt-get remove -y gradle || true
+        wget -q https://services.gradle.org/distributions/gradle-7.6.4-bin.zip
+        sudo unzip -q gradle-7.6.4-bin.zip -d /opt/
+        sudo ln -sf /opt/gradle-7.6.4/bin/gradle /usr/local/bin/gradle
+        gradle --version
+
     - name: Build Debug APK
       run: |
         cordova build android --debug
