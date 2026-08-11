@@ -1,0 +1,16 @@
+{
+  "name": "novacook-webview",
+  "version": "1.0.0",
+  "description": "NovaCook WebView Cordova project for Android",
+  "main": "index.js",
+  "scripts": {
+    "build": "cordova build android"
+  },
+  "keywords": [
+    "cordova",
+    "webview",
+    "android"
+  ],
+  "author": "NovaCook Team",
+  "license": "MIT"
+}
