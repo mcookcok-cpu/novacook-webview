@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>NovaCook Viewer</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: height; height: 100vh; }
+        .card { background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: center; max-width: 400px; width: 100%; }
+        h1 { color: #38bdf8; margin-bottom: 10px; }
+        p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
+        input { width: 100%; padding: 12px; margin: 15px 0; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #fff; font-size: 1rem; box-sizing: border-box; }
+        button { background: #0284c7; color: #fff; border: none; padding: 12px 20px; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; width: 100%; }
+        button:hover { background: #0369a1; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>NovaCook Viewer</h1>
+        <p>Silakan masukkan URL tujuan WebView kustom Anda:</p>
+        <input type="text" id="urlInput" value="https://www.google.com" placeholder="https://example.com">
+        <button onclick="loadUrl()">Muat Halaman</button>
+    </div>
+    <script>
+        function loadUrl() {
+            let u = document.getElementById('urlInput').value;
+            if(u) window.location.href = u;
+        }
+    </script>
+</body>
+</html>
