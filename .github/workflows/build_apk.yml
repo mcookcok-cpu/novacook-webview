@@ -37,6 +37,17 @@ jobs:
         sudo unzip -q gradle-7.6.4-bin.zip -d /opt/
         sudo ln -sf /opt/gradle-7.6.4/bin/gradle /usr/local/bin/gradle
 
+    - name: Setup Android SDK with build-tools 32
+      run: |
+        export ANDROID_HOME=$ANDROID_SDK_ROOT
+        echo "ANDROID_HOME=$ANDROID_HOME"
+        ls $ANDROID_HOME/build-tools/ 2>/dev/null || echo "No build-tools found, will install"
+        # Use the android command if available, else direct download
+        if [ -d "$ANDROID_HOME/cmdline-tools/latest" ]; then
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;32.0.0" "platforms;android-32"
+        fi
+
     - name: Build Debug APK
       run: |
         export PATH=/opt/gradle-7.6.4/bin:$PATH
